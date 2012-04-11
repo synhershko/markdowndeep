@@ -60,8 +60,8 @@ namespace MarkdownDeep
 			get { return m_closing; }
 		}
 
-		string m_name;
-		Dictionary<string, string> m_attributes = new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase);
+		readonly string m_name;
+		readonly Dictionary<string, string> m_attributes = new Dictionary<string, string>(StringComparer.CurrentCultureIgnoreCase);
 		bool m_closed;
 		bool m_closing;
 		HtmlTagFlags m_flags = 0;
@@ -82,17 +82,17 @@ namespace MarkdownDeep
 			}
 		}
 
-		static string[] m_allowed_tags = new string [] {
+		static readonly string[] m_allowed_tags = new string [] {
 			"b","blockquote","code","dd","dt","dl","del","em","h1","h2","h3","h4","h5","h6","i","kbd","li","ol","ul",
 			"p", "pre", "s", "sub", "sup", "strong", "strike", "img", "a"
 		};
 
-		static Dictionary<string, string[]> m_allowed_attributes = new Dictionary<string, string[]>() {
+		static readonly Dictionary<string, string[]> m_allowed_attributes = new Dictionary<string, string[]>() {
 			{ "a", new string[] { "href", "title"} },
 			{ "img", new string[] { "src", "width", "height", "alt", "title" } },
 		};
 
-		static Dictionary<string, HtmlTagFlags> m_tag_flags = new Dictionary<string, HtmlTagFlags>() {
+		static readonly Dictionary<string, HtmlTagFlags> m_tag_flags = new Dictionary<string, HtmlTagFlags>() {
 			{ "p", HtmlTagFlags.Block | HtmlTagFlags.ContentAsSpan }, 
 			{ "div", HtmlTagFlags.Block }, 
 			{ "h1", HtmlTagFlags.Block | HtmlTagFlags.ContentAsSpan }, 
